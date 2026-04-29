@@ -1,0 +1,35 @@
+﻿# DS18B20 sensors on the primary 1-Wire bus.
+one_wire:
+  - platform: gpio
+    pin: GPIO4
+    id: one_wire_bus
+
+sensor:
+  - platform: dallas_temp
+    id: kotel_podacha
+    address: ${kotel_podacha_adr}
+    one_wire_id: one_wire_bus
+    name: "Котел подача t°C"
+    update_interval: 10s
+
+  - platform: dallas_temp
+    id: kotel_obratka
+    address: ${kotel_obratka_adr}
+    one_wire_id: one_wire_bus
+    name: "Котел обратка t°C"
+    update_interval: 10s
+
+  - platform: dallas_temp
+    id: boiler_temperatura
+    address: ${boiler_adr}
+    one_wire_id: one_wire_bus
+    name: "Бойлер t°C"
+    update_interval: 10s
+
+  - platform: dallas_temp
+    id: pogoda_temperatura
+    address: ${pogoda_adr}
+    one_wire_id: one_wire_bus
+    name: "Погода °C"
+    update_interval: 10s
+

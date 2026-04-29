@@ -1,0 +1,10 @@
+﻿font:
+  - file: "gfonts://Roboto"
+    id: my_font
+    size: 24
+    glyphsets:
+      - GF_Latin_Core
+      - GF_Cyrillic_Core
+    glyphs:
+      - "°"
+

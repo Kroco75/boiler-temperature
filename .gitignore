@@ -1,0 +1,25 @@
+# Secrets
+esphome/secrets.yaml
+
+# ESPHome / PlatformIO
+.esphome/
+.pioenvs/
+.piolibdeps/
+
+# Build files
+*.bin
+*.elf
+
+# Logs
+logs/*
+!logs/README.md
+*.log
+
+# Python cache
+__pycache__/
+
+# IDE / OS
+.vscode/
+.DS_Store
+Thumbs.db
+

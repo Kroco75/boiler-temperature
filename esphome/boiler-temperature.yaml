@@ -1,0 +1,41 @@
+substitutions:
+  kotel_podacha_adr: "0x6601203815d2af28"
+  kotel_obratka_adr: "0x993c01d075c31328"
+  boiler_adr: "0xdf3c01d075c89728"
+  pogoda_adr: "0x113c01d607e36a28"
+
+esphome:
+  name: boiler-temperature
+  friendly_name: Boiler Temperature
+  on_boot:
+    priority: 600
+    then:
+      - light.turn_on:
+          id: display_backlight
+          brightness: 40%
+          transition_length: 1s
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: esp-idf
+
+logger:
+  level: VERBOSE
+
+api:
+  encryption:
+    key: !secret api_encryption_key
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+packages:
+  wifi: !include packages/wifi.yaml
+  sensors: !include packages/sensors.yaml
+  display: !include packages/display.yaml
+  diagnostics: !include packages/diagnostics.yaml
+  globals: !include common/globals.yaml
+  fonts: !include common/fonts.yaml
+

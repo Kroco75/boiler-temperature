@@ -1,0 +1,44 @@
+﻿output:
+  - platform: ledc
+    pin: GPIO10
+    id: backlight_pwm
+    frequency: 1000 Hz
+
+light:
+  - platform: monochromatic
+    name: "Display Backlight"
+    output: backlight_pwm
+    restore_mode: ALWAYS_OFF
+    default_transition_length: 1s
+    id: display_backlight
+
+spi:
+  clk_pin: GPIO6
+  mosi_pin: GPIO7
+
+display:
+  - platform: ili9xxx
+    model: ILI9341
+    cs_pin: GPIO3
+    dc_pin: GPIO5
+    reset_pin: GPIO2
+    invert_colors: false
+    rotation: 270
+    color_palette: 8BIT
+    update_interval: 5s
+    id: tft_display
+    lambda: |-
+      auto print_temp = [&](int y, const char *label, float value) {
+        if (std::isnan(value)) {
+          it.printf(10, y, id(my_font), Color(255, 255, 255), "%s: --.-°C", label);
+        } else {
+          it.printf(10, y, id(my_font), Color(255, 255, 255), "%s: %.1f°C", label, value);
+        }
+      };
+
+      it.filled_rectangle(0, 0, 320, 240, Color(0, 150, 255));
+      print_temp(50, "Вулиця", id(pogoda_temperatura).state);
+      print_temp(90, "Бойлер", id(boiler_temperatura).state);
+      print_temp(130, "Подача", id(kotel_podacha).state);
+      print_temp(170, "Обратка", id(kotel_obratka).state);
+

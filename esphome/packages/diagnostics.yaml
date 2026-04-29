@@ -1,0 +1,48 @@
+﻿binary_sensor:
+  - platform: status
+    name: "Boiler Temperature Status"
+
+sensor:
+  - platform: template
+    name: "Heap Free"
+    unit_of_measurement: "B"
+    update_interval: 30s
+    lambda: |-
+      return heap_caps_get_free_size(MALLOC_CAP_8BIT);
+
+  - platform: template
+    name: "Heap Max"
+    unit_of_measurement: "B"
+    update_interval: 30s
+    lambda: |-
+      return heap_caps_get_largest_free_block(MALLOC_CAP_8BIT);
+
+  - platform: wifi_signal
+    name: "WiFi RSSI"
+    id: wifi_rssi
+    entity_category: diagnostic
+    update_interval: 30s
+
+  - platform: copy
+    source_id: wifi_rssi
+    name: "WiFi %"
+    filters:
+      - lambda: |-
+          return std::min(std::max(2 * (x + 100.0f), 0.0f), 100.0f);
+    unit_of_measurement: "%"
+    entity_category: diagnostic
+
+  - platform: uptime
+    name: "Uptime"
+    unit_of_measurement: "год"
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.0002778
+
+text_sensor:
+  - platform: uptime
+    name: "Uptime HR"
+    update_interval: 60s
+
+  - platform: version
+    name: "Boiler Temperature ESPHome Version"
