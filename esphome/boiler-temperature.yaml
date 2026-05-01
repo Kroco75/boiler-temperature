@@ -25,11 +25,11 @@ logger:
 
 api:
   encryption:
-    key: !secret api_encryption_key
+    key: !secret boiler_api_encryption_key
 
 ota:
   - platform: esphome
-    password: !secret ota_password
+    password: !secret boiler_ota_password
 
 packages:
   wifi: !include packages/wifi.yaml
