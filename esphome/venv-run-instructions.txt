@@ -1,0 +1,81 @@
+﻿ESPHome запуск через локальний venv
+===================================
+
+1. Відкрити PowerShell.
+
+2. Перейти в папку ESPHome-конфігів:
+
+   cd C:\Users\admin\Desktop\myProject\boiler-temperature\esphome
+
+3. Активувати локальне Python-оточення:
+
+   .\venv\Scripts\Activate.ps1
+
+   Після активації в prompt зазвичай з'явиться префікс:
+
+   (venv)
+
+4. Перевірити, що використовується ESPHome з venv:
+
+   Get-Command esphome
+
+   Очікуваний шлях:
+
+   C:\Users\admin\Desktop\myProject\boiler-temperature\esphome\venv\Scripts\esphome.exe
+
+5. Перевірити версію ESPHome:
+
+   esphome version
+
+6. Виконати валідацію конфігурації:
+
+   esphome config boiler-temperature.yaml
+
+   Успішний результат має містити:
+
+   INFO Configuration is valid!
+
+7. Запустити прошивку або оновлення пристрою:
+
+   esphome run boiler-temperature.yaml
+
+
+Якщо PowerShell блокує Activate.ps1
+-----------------------------------
+
+Якщо з'являється помилка:
+
+   running scripts is disabled on this system
+
+Запустити PowerShell для цієї сесії з bypass:
+
+   powershell -ExecutionPolicy Bypass
+
+Або виконати команду в поточному вікні:
+
+   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+Після цього повторити:
+
+   .\venv\Scripts\Activate.ps1
+
+
+Корисні команди
+---------------
+
+Показати активний venv:
+
+   echo $env:VIRTUAL_ENV
+
+Показати шлях до Python:
+
+   Get-Command python
+
+Показати шлях до ESPHome:
+
+   Get-Command esphome
+
+Вийти з venv:
+
+   deactivate
+

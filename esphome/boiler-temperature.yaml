@@ -27,6 +27,9 @@ api:
   encryption:
     key: !secret boiler_api_encryption_key
 
+web_server:
+  port: 80
+
 ota:
   - platform: esphome
     password: !secret boiler_ota_password
