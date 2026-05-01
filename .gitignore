@@ -17,6 +17,7 @@ logs/*
 
 # Python cache
 __pycache__/
+venv/
 
 # IDE / OS
 .vscode/
