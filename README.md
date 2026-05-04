@@ -153,7 +153,7 @@ sensor:
     update_interval: 10s
 ```
 
-Це відповідає поточному файлу `esphome/packages/sensors.yaml`.
+Це відповідає поточному файлу `esphome/boiler-temperature/packages/sensors.yaml`.
 
 ## Приклад ESPHome: розділення на дві 1-Wire шини
 
@@ -276,14 +276,15 @@ boiler-temperature/
 ├── esphome/
 │   ├── boiler-temperature.yaml
 │   ├── secrets.yaml
-│   ├── packages/
-│   │   ├── sensors.yaml
-│   │   ├── display.yaml
-│   │   ├── wifi.yaml
-│   │   └── diagnostics.yaml
-│   └── common/
-│       ├── fonts.yaml
-│       └── globals.yaml
+│   └── boiler-temperature/
+│       ├── packages/
+│       │   ├── sensors.yaml
+│       │   ├── display.yaml
+│       │   ├── wifi.yaml
+│       │   └── diagnostics.yaml
+│       └── common/
+│           ├── fonts.yaml
+│           └── globals.yaml
 ├── hardware/
 │   ├── wiring.md
 │   ├── schematics.png
@@ -316,7 +317,7 @@ boiler-temperature/
 ## Запуск
 
 1. Заповнити `esphome/secrets.yaml`.
-2. Перевірити GPIO у `esphome/packages/sensors.yaml` та `esphome/packages/display.yaml`.
+2. Перевірити GPIO у `esphome/boiler-temperature/packages/sensors.yaml` та `esphome/boiler-temperature/packages/display.yaml`.
 3. Підключити один DS18B20 і перевірити лог.
 4. Перевірити, що адреси датчиків у `substitutions` відповідають фактичним DS18B20.
 5. Поступово підключити решту датчиків.

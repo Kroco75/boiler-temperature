@@ -1,4 +1,4 @@
-substitutions:
+﻿substitutions:
   kotel_podacha_adr: "0x6601203815d2af28"
   kotel_obratka_adr: "0x993c01d075c31328"
   boiler_adr: "0xdf3c01d075c89728"
@@ -35,10 +35,10 @@ ota:
     password: !secret boiler_ota_password
 
 packages:
-  wifi: !include packages/wifi.yaml
-  sensors: !include packages/sensors.yaml
-  display: !include packages/display.yaml
-  diagnostics: !include packages/diagnostics.yaml
-  globals: !include common/globals.yaml
-  fonts: !include common/fonts.yaml
+  wifi: !include boiler-temperature/packages/wifi.yaml
+  sensors: !include boiler-temperature/packages/sensors.yaml
+  display: !include boiler-temperature/packages/display.yaml
+  diagnostics: !include boiler-temperature/packages/diagnostics.yaml
+  globals: !include boiler-temperature/common/globals.yaml
+  fonts: !include boiler-temperature/common/fonts.yaml
 
