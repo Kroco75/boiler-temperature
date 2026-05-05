@@ -57,7 +57,7 @@ fi
 echo "Creating target device directory: ${TARGET_DEVICE_DIR}"
 mkdir -p "${TARGET_DEVICE_DIR}"
 
-for dir in common packages; do
+for dir in common packages images; do
   if [ ! -d "${SOURCE_DEVICE_DIR}/${dir}" ]; then
     echo "ERROR: Required source directory not found: ${SOURCE_DEVICE_DIR}/${dir}"
     exit 1
@@ -71,4 +71,5 @@ echo "Update completed successfully."
 echo "Main YAML: ${ESPHOME_DIR}/boiler-temperature.yaml"
 echo "Packages:  ${TARGET_DEVICE_DIR}/packages"
 echo "Common:    ${TARGET_DEVICE_DIR}/common"
+echo "Images:    ${TARGET_DEVICE_DIR}/images"
 

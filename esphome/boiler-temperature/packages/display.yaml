@@ -1,4 +1,9 @@
-﻿output:
+image:
+  - file: "boiler-temperature/images/screen_bg_320x240.png"
+    id: screen_bg
+    type: RGB565
+
+output:
   - platform: ledc
     pin: GPIO10
     id: backlight_pwm
@@ -28,17 +33,21 @@ display:
     update_interval: 5s
     id: tft_display
     lambda: |-
-      auto print_temp = [&](int y, const char *label, float value) {
+      const Color white(230, 246, 242);
+      const Color red(255, 82, 67);
+      const Color blue(0, 160, 255);
+      const Color cyan(29, 225, 216);
+
+      auto print_temp = [&](int x, int y, auto *font, Color color, float value) {
         if (std::isnan(value)) {
-          it.printf(10, y, id(my_font), Color(255, 255, 255), "%s: --.-°C", label);
+          it.printf(x, y, font, color, TextAlign::TOP_CENTER, "--.-°C");
         } else {
-          it.printf(10, y, id(my_font), Color(255, 255, 255), "%s: %.1f°C", label, value);
+          it.printf(x, y, font, color, TextAlign::TOP_CENTER, "%.1f°C", value);
         }
       };
 
-      it.filled_rectangle(0, 0, 320, 240, Color(0, 150, 255));
-      print_temp(50, "Вулиця", id(pogoda_temperatura).state);
-      print_temp(90, "Бойлер", id(boiler_temperatura).state);
-      print_temp(130, "Подача", id(kotel_podacha).state);
-      print_temp(170, "Обратка", id(kotel_obratka).state);
-
+      it.image(0, 0, id(screen_bg));
+      print_temp(125, 24, id(font_temp_lg), white, id(pogoda_temperatura).state);
+      print_temp(45, 160, id(font_temp_md), red, id(kotel_podacha).state);
+      print_temp(132, 160, id(font_temp_md), blue, id(kotel_obratka).state);
+      print_temp(245, 96, id(font_temp_lg), cyan, id(boiler_temperatura).state);
