@@ -2,6 +2,7 @@
 set -eu
 
 REPO_URL="https://github.com/Kroco75/boiler-temperature.git"
+BRANCH="new_screen"
 ESPHOME_DIR="/root/config/esphome"
 GIT_DIR="${ESPHOME_DIR}/git"
 REPO_DIR="${GIT_DIR}/boiler-temperature"
@@ -25,8 +26,8 @@ if [ -e "${REPO_DIR}" ]; then
   rm -rf "${REPO_DIR}"
 fi
 
-echo "Cloning repository..."
-git clone "${REPO_URL}" "${REPO_DIR}"
+echo "Cloning repository branch: ${BRANCH}"
+git clone -b "${BRANCH}" "${REPO_URL}" "${REPO_DIR}"
 
 if [ ! -d "${SOURCE_ESPHOME_DIR}" ]; then
   echo "ERROR: Source ESPHome directory not found: ${SOURCE_ESPHOME_DIR}"
