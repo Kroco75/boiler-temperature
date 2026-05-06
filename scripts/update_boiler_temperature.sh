@@ -2,7 +2,7 @@
 set -eu
 
 REPO_URL="https://github.com/Kroco75/boiler-temperature.git"
-BRANCH="new_screen"
+BRANCH="main"
 ESPHOME_DIR="/root/config/esphome"
 GIT_DIR="${ESPHOME_DIR}/git"
 REPO_DIR="${GIT_DIR}/boiler-temperature"
