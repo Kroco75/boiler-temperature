@@ -1,4 +1,4 @@
-image:
+﻿image:
   - file: "boiler-temperature/images/screen_bg_320x240.png"
     id: screen_bg
     type: RGB565
@@ -50,4 +50,4 @@ display:
       print_temp(125, 24, id(font_temp_lg), white, id(pogoda_temperatura).state);
       print_temp(45, 160, id(font_temp_md), red, id(kotel_podacha).state);
       print_temp(132, 160, id(font_temp_md), blue, id(kotel_obratka).state);
-      print_temp(245, 96, id(font_temp_lg), cyan, id(boiler_temperatura).state);
+      print_temp(245, 101, id(font_temp_boiler), cyan, id(boiler_temperatura).state);
