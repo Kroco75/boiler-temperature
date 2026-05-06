@@ -1,10 +1,18 @@
 ﻿font:
   - file: "gfonts://Roboto"
-    id: my_font
-    size: 24
-    glyphsets:
-      - GF_Latin_Core
-      - GF_Cyrillic_Core
+    id: font_temp_md
+    size: 20
     glyphs:
-      - "°"
+      - "0123456789.-°C"
 
+  - file: "gfonts://Roboto"
+    id: font_temp_boiler
+    size: 24
+    glyphs:
+      - "0123456789.-°C"
+
+  - file: "gfonts://Roboto"
+    id: font_temp_lg
+    size: 30
+    glyphs:
+      - "0123456789.-°C"

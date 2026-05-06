@@ -277,6 +277,8 @@ boiler-temperature/
 │   ├── boiler-temperature.yaml
 │   ├── secrets.yaml
 │   └── boiler-temperature/
+│       ├── images/
+│       │   └── screen_bg_320x240.png
 │       ├── packages/
 │       │   ├── sensors.yaml
 │       │   ├── display.yaml
